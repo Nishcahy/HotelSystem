@@ -1,0 +1,43 @@
+server:
+  port: 8082 # Changed port to 8082
+
+spring:
+  application:
+    name: Auth_Service
+
+  # --- Database Configuration (MySQL) ---
+  datasource:
+    url: jdbc:mysql://localhost:3306/users
+    username: root
+    password: root
+    driver-class-name: com.mysql.cj.jdbc.Driver
+
+  # --- JPA/Hibernate Configuration ---
+  jpa:
+    hibernate:
+      ddl-auto: update # Automatically update schema (dev setting)
+    show-sql: true
+    properties:
+      hibernate:
+        format_sql: true
+
+# --- Custom JWT/Refresh Token Properties ---
+application:
+  security:
+    jwt:
+      # Time in minutes for the short-lived Access Token
+      access-token-expiration-minutes: 15
+    # Time in days for the long-lived Refresh Token
+    refresh-token-expiration-days: 7
+
+# --- RSA Key Pair for JWT Signing ---
+# ⚠️ IMPORTANT: Replace these placeholders with your actual Base64 encoded RSA keys.
+# These keys are mandatory for Spring Security's JwtEncoder/JwtDecoder beans.
+jwt:
+  key:
+    # Private Key: Used by JwtEncoder (in Auth_Service) to sign the token.
+    private-key-base64: MIIEvwIBADANBgkqhkiG9w0BAQEFAASCBKkwggSlAgEAAoIBAQC7ANo14ESGQcIZWOIaT8iy4LQzEPU+M7o+4b/9+nBRsUObpQC90iQ61Wgp7OCKTivKa84i3DLi1X+Cdgz5c5ZJfLxapdMB8o/CRUW7wwTBF6YvwWlH4kXoxyWKo+l/WSbn9FaQyWIjRp9yAZDeJJO4vmhmyfreBMWBZ3m+SSB+cjyaospMlJ6w/qckBYGdsaXjGpU+ofqa9sYIHn7lxr34DzJQw6Yke9MCp9Jl/OuB39Bxi/SMcid579AW+mmm6JnigxblXsO9kEanPmNE+CjyOxmQ3KtY/KeRB2VC4op14LeIDxf7V5M8ujcxH3DsAwxJrOeAsVPt7c8Fwf0KChKxAgMBAAECggEALGn1KZ8Yf0+OZ0FAQDILT4rFWayRJqMX/LfWxt5Mf2aL0WNk0/CdSLjnSq/XG5oZ1fN5S7fDQTMmW+ioR7XPb6g3vwrL3RZMVP5pY8Ebd7Xjc0urMta3tmPYE3+/JQ8aSbRzO+OMkqbDF0tuaghDankUqDcYBVOaShP2qv5IwKb+C7hR3gt0vA/CgTRYNWTd0omJIBZ8paUvOssGox+Cvx82uxrhB5s/mcy19SuDZQYgDhDcUUAQRe4SQlcc0BguQcYEi6WWYhUXaXml8FAdaTdTPl0eY2q9pTFRlchI8gXsK5KMM7le9pfhsM1R0zKmMgAIfYRlbwwbZ4GJqF3sTQKBgQD09uZfhdC1TennP9MoOJEx4yeOTNC2HOKAYBoUXY5s6OeqLUJKeubumGkAVc4WZLwZXGu0Cf1fYQ8cV/WaiqDjbW8kL9jKWXyHEsbk1U/4DIFRBMBpai9yzlaygCYKeejdcPwGQowbrLwt5rmQ1PTn0rpx4axhr0Qq6WCZitmcNQKBgQDDbYEsiAHAYnfvgoVkGAsF++fdgCFtA/WsuaooIBWEZFI56ogNyFMSjlU93cgrfxSXSI6K6/cHPsDdtjz+QqN0uEicIlAwMG4h4cY/RLWL2wb5Mr6NJNTk3NMuz0mV+yPIUcDgHyztoZW3mqaAVw8KYatW0cWuE9N4bRHgqMUUDQKBgQDlv3NNf9nBUbPg2XGXtYYn/d4pjk3pn6mnsXqEQ0LDTqWIbC5SYHaarIM+dzt0sUHhn1a8YuoqPIPJl42YRhCjfQ3SKLXxAoDSxn+YO6BnCoN2kzhLJfYefPu/KoWDKdeHaOJWlK+HfTh47H56IeEYVAHdsUTV0WXjwUKCf0GdSQKBgQC5xzad+6kWl0UGpeBil8ya4q63zV95P+NjUJimTmHGGoxkTEUMPRxjrnTwPA5W8xbC/hGrlMef1pMH8X8oAndatPkpnCD4voFjqjqI2KtxCUUmzouAp7vO2PHVNO7yKe0JOFaPeHOAbzRhdx3DMX+10cVM4lv2sRg+CgmNtUKsXQKBgQCHypQyVxo5qUx3a+RZKG8ldk1TOkR8xVJyNnra+8GYP2iNNA2CEeowgF/sEB9jW6sZRVUDQA/brJthg6Q3lj59B8L2gKFSj4yRz7/TwdnMHbZAMOBlP0mQT2QsR41i6fNKtXMtoJfmSeffcbozjFBFMAkvNXx10NJgOPVLfAUutg==
+ 
+    
+    # Public Key: Used by JwtDecoder (in ALL microservices) to verify the token's signature.
+    public-key-base64: MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAuwDaNeBEhkHCGVjiGk/IsuC0MxD1PjO6PuG//fpwUbFDm6UAvdIkOtVoKezgik4rymvOItwy4tV/gnYM+XOWSXy8WqXTAfKPwkVFu8MEwRemL8FpR+JF6McliqPpf1km5/RWkMliI0afcgGQ3iSTuL5oZsn63gTFgWd5vkkgfnI8mqLKTJSesP6nJAWBnbGl4xqVPqH6mvbGCB5+5ca9+A8yUMOmJHvTAqfSZfzrgd/QcYv0jHInee/QFvpppuiZ4oMW5V7DvZBGpz5jRPgo8jsZkNyrWPynkQdlQuKKdeC3iA8X+1eTPLo3MR9w7AMMSazngLFT7e3PBcH9CgoSsQIDAQAB
