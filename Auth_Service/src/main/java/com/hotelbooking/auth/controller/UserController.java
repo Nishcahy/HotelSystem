@@ -1,6 +1,7 @@
 package com.hotelbooking.auth.controller;
 
 import java.nio.file.attribute.UserPrincipalNotFoundException;
+import java.util.Set;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -72,5 +73,13 @@ public class UserController {
     public ResponseEntity<?> getAllUsers() {
         return ResponseEntity.ok(userService.findAllUsers());
     }
+	
+	@PutMapping("/{userId}/roles")
+	// ⭐️ RBAC: Only SUPER_ADMIN can execute this endpoint
+	@PreAuthorize("hasRole('SUPER_ADMIN')") 
+	public ResponseEntity<Users> assignRoles(@PathVariable Long userId, @RequestBody Set<String> roleNames) {
+	    Users updatedUser = userService.updateRoles(userId, roleNames);
+	    return ResponseEntity.ok(updatedUser);
+	}
 	
 }

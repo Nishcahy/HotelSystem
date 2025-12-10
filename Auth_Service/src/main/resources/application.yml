@@ -41,3 +41,7 @@ jwt:
     
     # Public Key: Used by JwtDecoder (in ALL microservices) to verify the token's signature.
     public-key-base64: MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAuwDaNeBEhkHCGVjiGk/IsuC0MxD1PjO6PuG//fpwUbFDm6UAvdIkOtVoKezgik4rymvOItwy4tV/gnYM+XOWSXy8WqXTAfKPwkVFu8MEwRemL8FpR+JF6McliqPpf1km5/RWkMliI0afcgGQ3iSTuL5oZsn63gTFgWd5vkkgfnI8mqLKTJSesP6nJAWBnbGl4xqVPqH6mvbGCB5+5ca9+A8yUMOmJHvTAqfSZfzrgd/QcYv0jHInee/QFvpppuiZ4oMW5V7DvZBGpz5jRPgo8jsZkNyrWPynkQdlQuKKdeC3iA8X+1eTPLo3MR9w7AMMSazngLFT7e3PBcH9CgoSsQIDAQAB
+admin:
+  initial:
+    email: super.admin@hotelbooking.com
+    password: SuperAdmin@123
