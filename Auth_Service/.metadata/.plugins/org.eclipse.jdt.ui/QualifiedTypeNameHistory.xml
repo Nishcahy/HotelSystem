@@ -1,2 +1,25 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<qualifiedTypeNameHistroy/>
+<qualifiedTypeNameHistroy>
+    <fullyQualifiedTypeName name="org.hibernate.sql.ast.tree.expression.JdbcParameter"/>
+    <fullyQualifiedTypeName name="org.springframework.data.convert.ReadingConverter"/>
+    <fullyQualifiedTypeName name="org.springframework.stereotype.Repository"/>
+    <fullyQualifiedTypeName name="com.inventoryservice.service.IHotelService"/>
+    <fullyQualifiedTypeName name="com.inventoryservice.entity.Hotel"/>
+    <fullyQualifiedTypeName name="com.inventoryservice.repo.Hotelrepo"/>
+    <fullyQualifiedTypeName name="org.springframework.cache.annotation.CachePut"/>
+    <fullyQualifiedTypeName name="org.springframework.cache.annotation.Cacheable"/>
+    <fullyQualifiedTypeName name="org.springframework.cache.annotation.CacheEvict"/>
+    <fullyQualifiedTypeName name="org.springframework.data.jpa.repository.JpaRepository"/>
+    <fullyQualifiedTypeName name="com.inventoryservice.entity.RoomInventory"/>
+    <fullyQualifiedTypeName name="com.inventoryservice.service.IHotelInventoryService"/>
+    <fullyQualifiedTypeName name="org.springframework.stereotype.Service"/>
+    <fullyQualifiedTypeName name="lombok.RequiredArgsConstructor"/>
+    <fullyQualifiedTypeName name="com.inventoryservice.repo.Inventoryrepo"/>
+    <fullyQualifiedTypeName name="org.springframework.data.redis.core.RedisTemplate"/>
+    <fullyQualifiedTypeName name="org.springframework.kafka.annotation.KafkaListener"/>
+    <fullyQualifiedTypeName name="jakarta.transaction.Transactional"/>
+    <fullyQualifiedTypeName name="lombok.Data"/>
+    <fullyQualifiedTypeName name="lombok.AllArgsConstructor"/>
+    <fullyQualifiedTypeName name="lombok.NoArgsConstructor"/>
+    <fullyQualifiedTypeName name="com.inventoryservice.entity.BookingEvent"/>
+</qualifiedTypeNameHistroy>
