@@ -1,5 +1,8 @@
 package com.inventoryservice.service;
 
-public interface IHotelInventoryService {
+import com.inventoryservice.entity.BookingEvent;
 
+public interface IHotelInventoryService {
+	void consumeBookingEvent(BookingEvent event);
+	Integer getAvailableRooms(Long hotelId, Long roomTypeId);
 }

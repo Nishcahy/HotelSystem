@@ -13,7 +13,7 @@ import lombok.RequiredArgsConstructor;
 @Service
 @RequiredArgsConstructor
 public class HotelInventoryService implements IHotelInventoryService {
-	private Inventoryrepo invetoryrepo;
+	private final Inventoryrepo inventoryrepo;
 	private final RedisTemplate<String, Object> redisTemplate;
 	
 	private static final String REDIS_INV_KEY = "hotel:inventory:";
@@ -29,6 +29,18 @@ public class HotelInventoryService implements IHotelInventoryService {
         redisTemplate.opsForHash().increment(key, event.getRoomTypeId().toString(), -1);
         
         System.out.println("Inventory synced for RoomType: " + event.getRoomTypeId());
+    }
+	
+	public Integer getAvailableRooms(Long hotelId, Long roomTypeId) {
+        String key = REDIS_INV_KEY + hotelId;
+        Integer count = (Integer) redisTemplate.opsForHash().get(key, roomTypeId.toString());
+        
+        if (count == null) {
+            // Cache Miss: Fallback to DB and rebuild cache
+            count = inventoryrepo.findCountByRoomTypeId(roomTypeId);
+            redisTemplate.opsForHash().put(key, roomTypeId.toString(), count);
+        }
+        return count;
     }
 	
 	
